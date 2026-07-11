@@ -1,5 +1,7 @@
 .env
 video_state.json
+.DS_Store
+**/.DS_Store
 # keep run.log, performance.csv, and outbox/*/{QUEUE.md,batch.json,*.md} tracked —
 # the daily status routine reads these for real status. Heavy generated media stays out:
 outbox/*/img/

@@ -155,6 +155,16 @@ def upload_post_video(caption, platform, video_path, title=None):
         ("is_aigc", "true"),  # AI-generated-content disclosure (TikTok/YouTube policy)
     ]
     if platform == "tiktok":
+        # Without post_mode, TikTok silently falls back to MEDIA_UPLOAD (Inbox/draft
+        # mode) — video sits unpublished, no post_url, needs manual tap-to-post.
+        # DIRECT_POST actually publishes. upload-post.com holds its own approved
+        # TikTok Content Posting API integration (no per-account audit needed on
+        # our end), so request full public visibility — NOT SELF_ONLY. (July 11:
+        # every attempt that day landed in Inbox regardless of privacy_level —
+        # confirmed via upload-post.com's own email to be a temporary TikTok
+        # daily-active-user rate limit from repeated manual test runs, not an
+        # audit/visibility restriction. Don't reintroduce SELF_ONLY on that theory.)
+        fields.append(("post_mode", "DIRECT_POST"))
         fields.append(("privacy_level", "PUBLIC_TO_EVERYONE"))
     files = [("video", os.path.basename(video_path), open(video_path, "rb").read(), "video/mp4")]
     ct, body = _multipart(fields, files)
