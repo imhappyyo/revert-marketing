@@ -1,0 +1,22 @@
+──────── 2026-06-14 20:27:32 ────────
+  ✓ tiktok         -> outbox/2026-06-14/tiktok.md
+  ✓ x              -> outbox/2026-06-14/x.md
+  ✓ reddit         -> outbox/2026-06-14/reddit.md
+  ✓ instagram      -> outbox/2026-06-14/instagram.md
+  ✓ youtube_shorts -> outbox/2026-06-14/youtube_shorts.md
+  ✓ email          -> outbox/2026-06-14/email.md
+  ✓ aso            -> outbox/2026-06-14/aso.md
+  ✓ blog           -> outbox/2026-06-14/blog.md
+
+Batch ready: marketing/outbox/2026-06-14/  (LLM mode: template)
+  ⏸ tiktok         queued (needs media)
+  ⏸ x              queued (dry-run)
+  ⏸ reddit         queued (dry-run)
+  ⏸ instagram      queued (needs media)
+  ⏸ youtube_shorts queued (needs media)
+  · email          non-aggregator (see email.md / own adapter)
+  · aso            non-aggregator (see aso.md / own adapter)
+  · blog           non-aggregator (see blog.md / own adapter)
+
+Queue written: outbox/2026-06-14/QUEUE.md  (live=False)
+

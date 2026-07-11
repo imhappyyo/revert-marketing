@@ -1,0 +1,294 @@
+{
+  "product": {
+    "name": "Revert",
+    "full_name": "Revert: AI Keyboard & Lenses",
+    "subtitle": "Replies, Translator & Health",
+    "tagline": "Stop typing. Start tapping.",
+    "one_liner": "Revert is the AI keyboard that reads your chat and writes the perfect reply. Screenshot the conversation, tap a reply, hit send.",
+    "platforms": [
+      "iOS",
+      "Android"
+    ],
+    "links": {
+      "site": "https://gorevert.com",
+      "app_store": "https://apps.apple.com/app/revert",
+      "play_store": "https://play.google.com/store/apps/details?id=com.abiomye.revert"
+    },
+    "pricing": {
+      "free": "50 AI replies per day, free forever",
+      "pro_monthly": "$4.99/mo",
+      "pro_annual": "$39.99/yr (save 33%)"
+    }
+  },
+  "voice": {
+    "personality": "Witty, confident, a little cheeky. Talks like a clever friend, not a brand. Pro-privacy without being preachy. Punchy sentences. Never cringe, never corporate, no exclamation-mark spam.",
+    "do": [
+      "Lead with the pain or the payoff in the first 5 words",
+      "Show, don't tell — concrete before/after texts beat adjectives",
+      "Use lowercase for casual social posts; sentence case for store/email",
+      "One idea per post",
+      "End with a clear, low-friction CTA"
+    ],
+    "dont": [
+      "Don't say 'revolutionary', 'game-changer', 'unleash', 'supercharge'",
+      "Don't over-emoji (max 1-2, and only where it earns its place)",
+      "Don't claim it reads your private typing — it reads SCREENSHOTS you choose",
+      "Don't fake metrics or testimonials",
+      "Don't be defensive about privacy — state it plainly and move on"
+    ]
+  },
+  "audiences": [
+    {
+      "key": "dating",
+      "who": "People who freeze up texting a crush or on dating apps",
+      "hook": "the 'I left them on read for 3 hours figuring out what to say' crowd"
+    },
+    {
+      "key": "esl",
+      "who": "Non-native English speakers who want to sound natural",
+      "hook": "text confidently in a second language"
+    },
+    {
+      "key": "pros",
+      "who": "Busy professionals drowning in Slack/email/DMs",
+      "hook": "clear the reply backlog in tap, tap, tap"
+    },
+    {
+      "key": "anxious",
+      "who": "Overthinkers & socially anxious texters",
+      "hook": "stop drafting the same message 9 times"
+    },
+    {
+      "key": "learners",
+      "who": "Language learners texting across languages",
+      "hook": "the built-in translator that keeps the vibe, not just the words"
+    }
+  ],
+  "features": [
+    {
+      "key": "replies",
+      "name": "Screenshot-to-reply",
+      "blurb": "Screenshot any chat. Revert reads the room and serves 3 ready replies. Tap one, send."
+    },
+    {
+      "key": "privacy",
+      "name": "On-device privacy",
+      "blurb": "Screenshots are read on your phone with Apple's Vision framework. Your conversations are never stored or logged. Full stop."
+    },
+    {
+      "key": "translator",
+      "name": "Live translator",
+      "blurb": "Text anyone in any language. Revert translates and keeps the tone, not just the dictionary meaning."
+    },
+    {
+      "key": "tone",
+      "name": "Tone control",
+      "blurb": "Same message, different energy — warmer, firmer, funnier, more professional. One tap."
+    },
+    {
+      "key": "health",
+      "name": "Health & AR lenses",
+      "blurb": "Point your camera and Revert reads labels, menus, and signs — translate and understand the world, not just chats."
+    },
+    {
+      "key": "carplay",
+      "name": "CarPlay voice",
+      "blurb": "Hands on the wheel. Ask Revert out loud, hear the reply, drive on."
+    },
+    {
+      "key": "free",
+      "name": "Genuinely free tier",
+      "blurb": "50 AI replies a day, free forever. No card, no trial countdown anxiety."
+    }
+  ],
+  "angles": [
+    {
+      "id": "pain-dating",
+      "audience": "dating",
+      "idea": "The agony of not knowing what to text back, solved in one tap."
+    },
+    {
+      "id": "speed",
+      "audience": "pros",
+      "idea": "Reply to everyone in the time it takes to read one message."
+    },
+    {
+      "id": "privacy-vs-rivals",
+      "audience": "anxious",
+      "idea": "Other AI keyboards send everything to a server. Revert reads your screenshot on-device and stores nothing."
+    },
+    {
+      "id": "translator",
+      "audience": "learners",
+      "idea": "Text in a language you barely speak and still sound like yourself."
+    },
+    {
+      "id": "tone-shift",
+      "audience": "pros",
+      "idea": "Turn a blunt one-liner into something that won't start a fight — or vice versa."
+    },
+    {
+      "id": "read-the-room",
+      "audience": "dating",
+      "idea": "It understands the whole conversation, not just the last word — context-aware, not autocomplete."
+    },
+    {
+      "id": "overthinker",
+      "audience": "anxious",
+      "idea": "Stop rewriting the same text nine times. Pick a version, move on with your life."
+    },
+    {
+      "id": "work-polish",
+      "audience": "pros",
+      "idea": "Make the 11pm Slack reply sound like you slept."
+    },
+    {
+      "id": "before-after",
+      "audience": "dating",
+      "idea": "Show a cringe draft vs. the Revert reply. Let the contrast sell it."
+    },
+    {
+      "id": "dumb-keyboard",
+      "audience": "pros",
+      "idea": "Your phone's keyboard has done the same thing since 2007. Provocation post."
+    },
+    {
+      "id": "esl-confidence",
+      "audience": "esl",
+      "idea": "English isn't your first language? Nobody will be able to tell."
+    },
+    {
+      "id": "free-tier",
+      "audience": "anxious",
+      "idea": "50 replies a day, free, no card. Lead with generosity."
+    },
+    {
+      "id": "build-in-public",
+      "audience": "pros",
+      "idea": "Founder note: why I built an AI keyboard that forgets your conversations on purpose."
+    },
+    {
+      "id": "ar-lens",
+      "audience": "learners",
+      "idea": "Point it at a foreign menu. It reads and translates in place."
+    }
+  ],
+  "hooks": [
+    "POV: someone you like just texted and your brain went blank.",
+    "i haven't typed a full sentence in 3 weeks.",
+    "the worst part of dating apps isn't matching. it's the reply.",
+    "your keyboard is from 2007. mine reads the room.",
+    "i screenshot the chat, tap once, and i'm done.",
+    "how to reply to 40 messages before your coffee gets cold.",
+    "every other AI keyboard ships your texts to a server. this one doesn't.",
+    "POV: english is your second language but nobody can tell.",
+    "i let an AI handle my texts for a week. here's what happened.",
+    "stop drafting the same message nine times.",
+    "the 'seen 3:14pm' to 'replied' speedrun.",
+    "i made my keyboard do the talking.",
+    "this is what your texts could look like with zero effort.",
+    "she said 'we need to talk.' my keyboard said 'i got you.'",
+    "the keyboard that screenshots your chat and writes the perfect reply.",
+    "turning 'hey' into an actual conversation, one tap at a time.",
+    "your group chat doesn't know an AI is carrying you.",
+    "reply in any language without google translate making it weird.",
+    "the fastest way to never be left on read again.",
+    "what if your keyboard understood the conversation?",
+    "left on read? leave them speechless",
+    "seen at 2:47am. solved at 2:47am.",
+    "the situationship is losing and he doesn't know why",
+    "rip 'guys what do i say', the group chat is retired",
+    "my rizz is outsourced and honestly thriving",
+    "exam brain can't write texts. good thing it doesn't have to",
+    "english is my second language, smooth is my first",
+    "drafted 9 replies, deleted 9, tapped once",
+    "stopped typing paragraphs at 3am. started sleeping.",
+    "they think i'm effortless. correct."
+  ],
+  "ctas": [
+    "Free on iOS and Android → gorevert.com",
+    "Try it free, 50 replies a day → gorevert.com",
+    "Stop typing. Start tapping. Link in bio.",
+    "Download Revert free. No card, no catch.",
+    "Get it free → gorevert.com"
+  ],
+  "channels": {
+    "tiktok": {
+      "type": "short-video",
+      "specs": "9:16, 7-15s, hook in first 1.5s, captions on-screen, trending audio",
+      "cadence_per_week": 5,
+      "hashtags": [
+        "#aikeyboard",
+        "#texting",
+        "#datingapps",
+        "#productivity",
+        "#iphonetips",
+        "#ai",
+        "#techtok",
+        "#appsyouneed"
+      ]
+    },
+    "instagram": {
+      "type": "reel+carousel",
+      "specs": "9:16 Reels mirror TikTok; 4:5 carousels for before/after and tips",
+      "cadence_per_week": 5,
+      "hashtags": [
+        "#aikeyboard",
+        "#iphoneapps",
+        "#texting",
+        "#datingtips",
+        "#productivityapp",
+        "#ai",
+        "#appstore",
+        "#techreview"
+      ]
+    },
+    "youtube_shorts": {
+      "type": "short-video",
+      "specs": "9:16, <60s, keyword-rich title, repurpose TikToks",
+      "cadence_per_week": 3,
+      "hashtags": [
+        "#Shorts",
+        "#AIkeyboard",
+        "#iPhone",
+        "#Android",
+        "#AItools"
+      ]
+    },
+    "x": {
+      "type": "text+clip",
+      "specs": "Hook line, optional clip/gif, 1 link max. Threads for before/after and build-in-public.",
+      "cadence_per_week": 7,
+      "hashtags": [
+        "#buildinpublic",
+        "#iosdev",
+        "#AI",
+        "#indiehackers"
+      ]
+    },
+    "reddit": {
+      "type": "text+demo",
+      "specs": "Value-first, no spam. Disclose you're the maker. Subs: r/apple, r/iphone, r/productivity, r/sideproject, r/Entrepreneur, r/languagelearning, r/dating_advice (carefully)",
+      "cadence_per_week": 2,
+      "hashtags": []
+    },
+    "email": {
+      "type": "lifecycle",
+      "specs": "Plain-text feel. Welcome → activation (enable keyboard) → first-reply nudge → Pro value → win-back.",
+      "cadence_per_week": 1,
+      "hashtags": []
+    },
+    "blog": {
+      "type": "seo",
+      "specs": "800-1400 words, one target keyword, helpful not salesy, internal link to download. Publishes to gorevert.com.",
+      "cadence_per_week": 1,
+      "hashtags": []
+    },
+    "aso": {
+      "type": "store-listing",
+      "specs": "App Store + Play Store: title (30c), subtitle (30c), keywords (100c iOS), description. Refresh on each release.",
+      "cadence_per_week": 0,
+      "hashtags": []
+    }
+  }
+}
