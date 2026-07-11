@@ -9,8 +9,14 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-# load .env if present (also loaded inside the python tools)
-[ -f .env ] && set -a && . ./.env && set +a
+# .env is loaded independently by EACH python script below (engine.py,
+# video_gen.py, creative.py, post.py all have their own load_env()) — this
+# script no longer bash-sources .env itself. Bash-sourcing broke silently
+# whenever a value contained shell-meaningful characters (e.g.
+# REVERT_LLM_HEADER="Authorization: Bearer" — the space made bash try to
+# run "Bearer" as a command, exit 127, and kill the whole script under
+# `set -e`, since June 14). Python's simple key=value line parser has no
+# such restriction — never re-add a `. ./.env` source line here.
 
 LOG="run.log"
 {

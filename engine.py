@@ -25,6 +25,19 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 BRAND = json.load(open(os.path.join(ROOT, "brand.json")))
 
 
+def load_env():
+    """Load marketing/.env directly (values may contain spaces/colons that
+    aren't valid shell syntax — e.g. 'Authorization: Bearer' — so this script
+    no longer depends on run.sh bash-sourcing the file)."""
+    p = os.path.join(ROOT, ".env")
+    if os.path.exists(p):
+        for line in open(p):
+            line = line.strip()
+            if line and not line.startswith("#") and "=" in line:
+                k, _, v = line.partition("=")
+                os.environ.setdefault(k.strip(), v.strip())
+
+
 def today():
     # date provided via env for deterministic/testable runs, else system date
     d = os.environ.get("REVERT_RUN_DATE")
@@ -363,6 +376,7 @@ def captions(d):
 
 
 def main():
+    load_env()
     d = today()
     outdir = os.path.join(ROOT, "outbox", d)
     os.makedirs(outdir, exist_ok=True)

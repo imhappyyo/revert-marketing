@@ -18,6 +18,16 @@ import os, sys, json, hashlib, datetime, subprocess, tempfile, shutil
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 BRAND = json.load(open(os.path.join(ROOT, "brand.json")))
+
+
+def load_env():
+    p = os.path.join(ROOT, ".env")
+    if os.path.exists(p):
+        for line in open(p):
+            line = line.strip()
+            if line and not line.startswith("#") and "=" in line:
+                k, _, v = line.partition("=")
+                os.environ.setdefault(k.strip(), v.strip())
 P = BRAND["product"]
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
@@ -159,6 +169,7 @@ FORMATS = [
 
 
 def main():
+    load_env()
     only = sys.argv[1] if len(sys.argv) > 1 else None
     d = os.environ.get("REVERT_RUN_DATE", datetime.date.today().isoformat())
     outdir = os.path.join(ROOT, "outbox", d, "img")
