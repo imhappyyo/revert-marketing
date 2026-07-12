@@ -178,3 +178,4 @@ Batch ready: marketing/outbox/2026-07-12/  (LLM mode: template)
 
 Queue: outbox/2026-07-12/QUEUE.md  (provider=upload_post, live=True)  perf: +5 row(s) -> performance.csv
 
+fatal: could not read Username for 'https://github.com': Device not configured

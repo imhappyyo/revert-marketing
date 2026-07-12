@@ -15,6 +15,8 @@ visuals match the day's copy. post.py picks up the PNGs from outbox/<date>/img/.
 Stdlib only (+ headless Chrome).
 """
 import os, sys, json, hashlib, datetime, subprocess, tempfile, shutil
+from engine import pick  # same date-deterministic rotation engine.py uses for
+                          # captions, so images and captions stay in sync
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 BRAND = json.load(open(os.path.join(ROOT, "brand.json")))
@@ -35,11 +37,42 @@ BG = "#020208"
 ACCENT = "#C96442"        # coral CTA
 INK = "#F4F1EC"
 
-SAMPLE_REPLIES = [
-    "A hike sounds amazing — Saturday morning?",
-    "Yes! There's a beautiful loop at Muir Woods 😊",
-    "Tennessee Valley trail — easy walk, unreal views.",
+# Themed reply sets for the phone mockup — rotated daily (REPLY_SALT below) so the
+# product shot itself changes, not just the headline. Roughly matched to brand.json's
+# audiences (dating/pros/anxious/learners/casual) for variety across common use cases.
+REPLY_SETS = [
+    [   # dating
+        "A hike sounds amazing — Saturday morning?",
+        "Yes! There's a beautiful loop at Muir Woods 😊",
+        "Tennessee Valley trail — easy walk, unreal views.",
+    ],
+    [   # busy professional / work DMs
+        "Can do 2pm instead of 3 — does that work?",
+        "Sent the deck over, let me know if it needs edits.",
+        "On it — I'll have this back to you by EOD.",
+    ],
+    [   # overthinker / anxious texter
+        "Haha no worries at all, whenever works for you!",
+        "Totally get it, take your time — no rush here.",
+        "All good on my end, just checking in :)",
+    ],
+    [   # language learner / ESL
+        "That sounds great, I'd love to join you!",
+        "Sorry, could you say that in simpler words?",
+        "Thank you so much, that really helps me understand.",
+    ],
+    [   # casual friend group chat
+        "Bro I'm already on my way, give me 10 mins",
+        "LOL yes let's do it, count me in",
+        "Same time next week? I'm free after 6.",
+    ],
 ]
+def daily_replies(d):
+    """Date-ordinal round-robin (not a hash pick) — guarantees consecutive days
+    never repeat the same reply set, unlike a hash which can occasionally collide
+    on adjacent dates with a small pool. Same technique video_gen.py uses for
+    scene rotation."""
+    return REPLY_SETS[datetime.date.fromisoformat(d).toordinal() % len(REPLY_SETS)]
 
 
 def daily_hook():
@@ -60,11 +93,18 @@ def spiral_svg(size=120):
     </svg>"""
 
 
-def product_html(w, h, headline, subline):
-    big = max(34, int(w * 0.085))
+def product_html(w, h, headline, subline, replies):
+    # Rotating hooks vary widely in length (unlike the old static 2-word tagline),
+    # so scale the headline down for longer text to avoid overflow/clipping.
+    base = w * 0.085
+    if len(headline) > 90:
+        base = w * 0.055
+    elif len(headline) > 55:
+        base = w * 0.068
+    big = max(30, int(base))
     cards = "".join(
         f'<div class="card" style="opacity:{1-0.18*i}">{r}'
-        f'<span class="tap"></span></div>' for i, r in enumerate(SAMPLE_REPLIES))
+        f'<span class="tap"></span></div>' for i, r in enumerate(replies))
     return f"""<!doctype html><meta charset="utf-8"><style>
     *{{margin:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}}
     html,body{{width:{w}px;height:{h}px;overflow:hidden}}
@@ -84,8 +124,8 @@ def product_html(w, h, headline, subline):
       border-radius:{int(w*0.06)}px;box-shadow:0 30px 80px rgba(0,0,0,.6);
       padding:{int(w*0.05)}px {int(w*0.045)}px;display:flex;flex-direction:column;justify-content:flex-end;gap:{int(w*0.028)}px}}
     .card{{background:linear-gradient(180deg,#16121f,#120f1a);border:1px solid #2a2440;
-      border-radius:{int(w*0.035)}px;padding:{int(w*0.034)}px {int(w*0.04)}px;font-size:{int(w*0.03)}px;
-      color:#e9e6f2;position:relative;box-shadow:0 0 26px rgba(124,92,255,.18)}}
+      border-radius:{int(w*0.035)}px;padding:{int(w*0.034)}px {int(w*0.11)}px {int(w*0.034)}px {int(w*0.04)}px;
+      font-size:{int(w*0.03)}px;color:#e9e6f2;position:relative;box-shadow:0 0 26px rgba(124,92,255,.18)}}
     .tap{{position:absolute;right:{int(w*0.035)}px;top:50%;transform:translateY(-50%);
       width:{int(w*0.05)}px;height:{int(w*0.05)}px;border-radius:50%;
       background:radial-gradient(circle at 40% 35%,#7C5CFF,#3FA9FF)}}
@@ -155,10 +195,6 @@ def render(html, out_png, w, h):
     return out_png
 
 
-TAG1, TAG2 = "Stop typing.", "Start tapping."
-HEAD = f'{TAG1}<br><span class="dim">{TAG2}</span>'
-SUB = "Screenshot your chat. The AI writes 3 replies. Tap one."
-
 FORMATS = [
     ("instagram_4x5", 1080, 1350, "product"),
     ("story_9x16",    1080, 1920, "product"),
@@ -175,11 +211,22 @@ def main():
     outdir = os.path.join(ROOT, "outbox", d, "img")
     os.makedirs(outdir, exist_ok=True)
     hook = daily_hook()
+    # instagram_4x5 is the exact image post.py attaches to the live Instagram post —
+    # match its headline/subline to that day's ACTUAL Instagram caption (same salt=3
+    # engine.py's gen_instagram/captions() use) so image and caption never diverge,
+    # and rotate the phone-mockup replies daily too (previously 100% static every day
+    # — the actual bug behind "same picture every day").
+    ig_hook = pick(BRAND["hooks"], d, 3)
+    ig_cta = pick(BRAND["ctas"], d, 3)
+    head = ig_hook  # the CTA already lives in the small subline + bottom pill — cramming
+                    # it into the big headline too caused 4-line overflow/clipping
+    sub = f"{P['one_liner']} {ig_cta}"
+    replies = daily_replies(d)
     n = 0
     for name, w, h, mode in FORMATS:
         if only and only not in name:
             continue
-        html = hook_html(w, h, hook) if mode == "hook" else product_html(w, h, HEAD, SUB)
+        html = hook_html(w, h, hook) if mode == "hook" else product_html(w, h, head, sub, replies)
         out = os.path.join(outdir, f"{name}.png")
         render(html, out, w, h)
         print(f"  ✓ {name:16s} {w}x{h} -> outbox/{d}/img/{name}.png")
