@@ -1,0 +1,66 @@
+{
+  "date": "2026-07-13",
+  "llm": false,
+  "items": {
+    "tiktok": {
+      "file": "tiktok.md",
+      "channel": "tiktok",
+      "angle": "privacy-vs-rivals",
+      "audience": "anxious",
+      "hook": "i screenshot the chat, tap once, and i'm done.",
+      "caption": "i screenshot the chat, tap once, and i'm done. Get it free \u2192 gorevert.com\n#datingapps #productivity #iphonetips #ai #techtok"
+    },
+    "x": {
+      "file": "x.md",
+      "channel": "x",
+      "angle": "build-in-public",
+      "audience": "pros",
+      "hook": "she said 'we need to talk.' my keyboard said 'i got you.'",
+      "caption": "she said 'we need to talk.' my keyboard said 'i got you.'\n\nRevert is the AI keyboard that reads your chat and writes the perfect reply. Screenshot the conversation, tap a reply, hit send.\n\nDownload Revert free. No card, no catch."
+    },
+    "reddit": {
+      "file": "reddit.md",
+      "channel": "reddit",
+      "angle": "translator",
+      "audience": "learners",
+      "hook": "",
+      "caption": "Revert is the AI keyboard that reads your chat and writes the perfect reply. Screenshot the conversation, tap a reply, hit send. It's free (50 replies/day), iOS + Android: https://gorevert.com. Solo dev \u2014 would genuinely love feedback on what would make you keep a keyboard like this installed.",
+      "title": "I built an AI keyboard that reads your chat screenshots and writes the reply \u2014 feedback welcome",
+      "subreddit": "sideproject"
+    },
+    "instagram": {
+      "file": "instagram.md",
+      "channel": "instagram",
+      "angle": "tone-shift",
+      "audience": "pros",
+      "hook": "every other AI keyboard ships your texts to a server. this one doesn't.",
+      "caption": "every other AI keyboard ships your texts to a server. this one doesn't.\n\nRevert is the AI keyboard that reads your chat and writes the perfect reply. Screenshot the conversation, tap a reply, hit send.\n\nTry it free, 50 replies a day \u2192 gorevert.com\n\n#productivityapp #ai #appstore #techreview #aikeyboard"
+    },
+    "youtube_shorts": {
+      "file": "youtube_shorts.md",
+      "channel": "youtube_shorts",
+      "angle": "read-the-room",
+      "audience": "dating",
+      "hook": "",
+      "caption": "This AI keyboard writes your texts for you. Stop typing. Start tapping. Link in bio. #iPhone #Android #AItools #Shorts"
+    },
+    "email": {
+      "file": "email.md",
+      "channel": "email",
+      "angle": "work-polish",
+      "audience": "pros"
+    },
+    "aso": {
+      "file": "aso.md",
+      "channel": "aso",
+      "angle": "before-after",
+      "audience": "dating"
+    },
+    "blog": {
+      "file": "blog.md",
+      "channel": "blog",
+      "angle": "overthinker",
+      "audience": "anxious"
+    }
+  }
+}
