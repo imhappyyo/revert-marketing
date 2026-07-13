@@ -108,7 +108,11 @@ def spiral_svg(size=120):
 def window_geometry(vid_w, vid_h):
     """Fit the recording into the frame leaving room for hook (top) and pill
     (bottom). Returns (x, y, w, h) of the video window, even-dimensioned."""
-    top, bottom, side = 320, 150, 60
+    # top=460: hook text starts at 260px (pushed down to clear TikTok's own top
+    # UI chrome — search bar/back button — which was colliding with text at the
+    # old top:96px) and can wrap to 2-3 lines at font-size 64/line-height 1.08
+    # (~69px/line), so the window must start well after that, not at the old 320.
+    top, bottom, side = 460, 150, 60
     max_h = H - top - bottom
     max_w = W - 2 * side
     scale = min(max_w / vid_w, max_h / vid_h)
@@ -137,7 +141,7 @@ def frame_html(hook, x, y, w, h):
     .ring{{position:absolute;left:{x-3}px;top:{y-3}px;width:{w+6}px;height:{h+6}px;
       border-radius:{r+3}px;border:3px solid rgba(124,92,255,.55);
       box-shadow:0 0 44px rgba(124,92,255,.45), inset 0 0 22px rgba(124,92,255,.18);z-index:3}}
-    .hook{{position:absolute;left:60px;right:60px;top:96px;z-index:4;text-align:center;
+    .hook{{position:absolute;left:60px;right:60px;top:260px;z-index:4;text-align:center;
       font-family:-apple-system,'SF Pro Display','Helvetica Neue',Arial,sans-serif;
       font-size:64px;font-weight:800;line-height:1.08;letter-spacing:-.5px;color:{INK};
       text-shadow:0 4px 30px rgba(0,0,0,.8)}}
@@ -185,11 +189,11 @@ def overlay_html(hook, with_pill=True):
     return f"""<!doctype html><meta charset="utf-8"><style>
     *{{margin:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}}
     html,body{{width:{W}px;height:{H}px;overflow:hidden;background:transparent}}
-    .scrimT{{position:absolute;left:0;top:0;right:0;height:420px;
+    .scrimT{{position:absolute;left:0;top:0;right:0;height:480px;
       background:linear-gradient(180deg, rgba(2,2,8,.82), rgba(2,2,8,0))}}
     .scrimB{{position:absolute;left:0;bottom:0;right:0;height:260px;
       background:linear-gradient(0deg, rgba(2,2,8,.72), rgba(2,2,8,0))}}
-    .hook{{position:absolute;left:60px;right:60px;top:96px;text-align:center;
+    .hook{{position:absolute;left:60px;right:60px;top:260px;text-align:center;
       font-family:-apple-system,'SF Pro Display','Helvetica Neue',Arial,sans-serif;
       font-size:64px;font-weight:800;line-height:1.08;letter-spacing:-.5px;color:{INK};
       text-shadow:0 4px 30px rgba(0,0,0,.85)}}
