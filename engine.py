@@ -359,11 +359,13 @@ def captions(d):
     tt = hashtags(d, "tiktok")
     ig = hashtags(d, "instagram")
     yt = hashtags(d, "youtube_shorts")
+    xt = hashtags(d, "x")  # X: 1-2 hashtags measurably beats zero (+21% engagement,
+                            # 2026 data) but 3+ actively hurts reach — stay at 2 max.
     h_x  = pick(BRAND['hooks'], d, 10)
     h_ig = pick(BRAND['hooks'], d, 3)
     h_tt = pick(BRAND['hooks'], d, 1)
     return {
-        "x":              {"hook": h_x,  "caption": f"{h_x}\n\n{one}\n\n{pick(BRAND['ctas'], d, 10)}"},
+        "x":              {"hook": h_x,  "caption": f"{h_x}\n\n{one}\n\n{pick(BRAND['ctas'], d, 10)} {xt}"},
         "instagram":      {"hook": h_ig, "caption": f"{h_ig}\n\n{one}\n\n{pick(BRAND['ctas'], d, 3)}\n\n{ig}"},
         "tiktok":         {"hook": h_tt, "caption": f"{h_tt} {pick(BRAND['ctas'], d, 1)}\n{tt}"},
         "youtube_shorts": {"hook": "", "caption": f"This AI keyboard writes your texts for you. {pick(BRAND['ctas'], d, 4)} {yt}"},

@@ -215,32 +215,32 @@
   "channels": {
     "tiktok": {
       "type": "short-video",
-      "specs": "9:16, 7-15s, hook in first 1.5s, captions on-screen, trending audio",
+      "specs": "9:16, 7-15s, hook in first 1.5s, captions on-screen, trending audio. Hashtag rule (2026): 3-5 tags max, ONE broad/discovery tag only (never stack #fyp+#viral+#trending — confuses the algorithm's targeting signal), rest niche+specific.",
       "cadence_per_week": 5,
       "hashtags": [
+        "#fyp",
+        "#DatingTok",
+        "#TextingTips",
         "#aikeyboard",
-        "#texting",
-        "#datingapps",
-        "#productivity",
+        "#AITools",
         "#iphonetips",
-        "#ai",
-        "#techtok",
-        "#appsyouneed"
+        "#ProductivityTok",
+        "#GenZ"
       ]
     },
     "instagram": {
       "type": "reel+carousel",
-      "specs": "9:16 Reels mirror TikTok; 4:5 carousels for before/after and tips",
+      "specs": "9:16 Reels mirror TikTok; 4:5 carousels for before/after and tips. Hashtag rule (2026): Instagram enforces a 5-tag cap — use exactly 5 precise tags, never generic filler (#love/#instagood waste a slot); rotate selection per post rather than reusing the identical set.",
       "cadence_per_week": 5,
       "hashtags": [
+        "#DatingTok",
+        "#TextingTips",
         "#aikeyboard",
         "#iphoneapps",
-        "#texting",
-        "#datingtips",
         "#productivityapp",
-        "#ai",
+        "#GenZ",
         "#appstore",
-        "#techreview"
+        "#AITools"
       ]
     },
     "youtube_shorts": {
@@ -252,17 +252,18 @@
         "#AIkeyboard",
         "#iPhone",
         "#Android",
-        "#AItools"
+        "#AItools",
+        "#DatingTok"
       ]
     },
     "x": {
       "type": "text+clip",
-      "specs": "Hook line, optional clip/gif, 1 link max. Threads for before/after and build-in-public.",
+      "specs": "Hook line, optional clip/gif, 1 link max. Threads for before/after and build-in-public. Hashtag rule (2026): 1-2 tags ONLY — 3+ measurably cuts reach (-17% at 3, -40% at 5+); one broad + one niche is the highest-performing pattern, never lead the tweet with a hashtag (triggers spam filters).",
       "cadence_per_week": 7,
       "hashtags": [
-        "#buildinpublic",
-        "#iosdev",
         "#AI",
+        "#buildinpublic",
+        "#DatingTok",
         "#indiehackers"
       ]
     },
