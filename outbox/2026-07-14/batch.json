@@ -1,0 +1,66 @@
+{
+  "date": "2026-07-14",
+  "llm": false,
+  "items": {
+    "tiktok": {
+      "file": "tiktok.md",
+      "channel": "tiktok",
+      "angle": "ar-lens",
+      "audience": "learners",
+      "hook": "rip 'guys what do i say', the group chat is retired",
+      "caption": "rip 'guys what do i say', the group chat is retired Download Revert free. No card, no catch.\n#DatingTok #TextingTips #aikeyboard #AITools #iphonetips"
+    },
+    "x": {
+      "file": "x.md",
+      "channel": "x",
+      "angle": "dumb-keyboard",
+      "audience": "pros",
+      "hook": "the worst part of dating apps isn't matching. it's the reply.",
+      "caption": "the worst part of dating apps isn't matching. it's the reply.\n\nRevert is the AI keyboard that reads your chat and writes the perfect reply. Screenshot the conversation, tap a reply, hit send.\n\nStop typing. Start tapping. Link in bio. #indiehackers #AI"
+    },
+    "reddit": {
+      "file": "reddit.md",
+      "channel": "reddit",
+      "angle": "pain-dating",
+      "audience": "dating",
+      "hook": "",
+      "caption": "Revert is the AI keyboard that reads your chat and writes the perfect reply. Screenshot the conversation, tap a reply, hit send. It's free (50 replies/day), iOS + Android: https://gorevert.com. Solo dev \u2014 would genuinely love feedback on what would make you keep a keyboard like this installed.",
+      "title": "I built an AI keyboard that reads your chat screenshots and writes the reply \u2014 feedback welcome",
+      "subreddit": "sideproject"
+    },
+    "instagram": {
+      "file": "instagram.md",
+      "channel": "instagram",
+      "angle": "speed",
+      "audience": "pros",
+      "hook": "exam brain can't write texts. good thing it doesn't have to",
+      "caption": "exam brain can't write texts. good thing it doesn't have to\n\nRevert is the AI keyboard that reads your chat and writes the perfect reply. Screenshot the conversation, tap a reply, hit send.\n\nFree on iOS and Android \u2192 gorevert.com\n\n#iphoneapps #productivityapp #GenZ #appstore #AITools"
+    },
+    "youtube_shorts": {
+      "file": "youtube_shorts.md",
+      "channel": "youtube_shorts",
+      "angle": "privacy-vs-rivals",
+      "audience": "anxious",
+      "hook": "",
+      "caption": "This AI keyboard writes your texts for you. Try it free, 50 replies a day \u2192 gorevert.com #iPhone #Android #AItools #DatingTok"
+    },
+    "email": {
+      "file": "email.md",
+      "channel": "email",
+      "angle": "tone-shift",
+      "audience": "pros"
+    },
+    "aso": {
+      "file": "aso.md",
+      "channel": "aso",
+      "angle": "read-the-room",
+      "audience": "dating"
+    },
+    "blog": {
+      "file": "blog.md",
+      "channel": "blog",
+      "angle": "translator",
+      "audience": "learners"
+    }
+  }
+}
