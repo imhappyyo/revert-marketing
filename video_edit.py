@@ -3,16 +3,17 @@
 Revert screencast composer — turns REAL screen recordings into TikTok-ready ads.
 
 Strategy (senior-marketing call): for a keyboard app the product demo IS the ad.
-No AI-generated actors — the daily video is the actual app UI in action:
+No AI-generated actors — the daily video is the actual app UI in action, full-bleed
+(no boxed device frame), with the hook caption centered over the footage, meme-caption
+style (July 14 redesign — the earlier top-boxed-window layout is gone):
 
   ┌──────────────────────────┐
-  │   HOOK TEXT (daily)      │   branded dark frame, violet glows
-  │ ┌──────────────────────┐ │
-  │ │                      │ │
-  │ │   REAL SCREENCAST    │ │   rounded window, 1.25x pacing
-  │ │   (assets/screencasts│ │
-  │ │    rotated by date)  │ │
-  │ └──────────────────────┘ │
+  │                          │
+  │   REAL SCREENCAST        │   scaled to fill the whole frame
+  │  ───────────────────     │
+  │   HOOK TEXT (daily)      │ ← centered, scrim band behind for readability
+  │  ───────────────────     │
+  │                          │
   │  Revert · gorevert.com   │
   └──────────────────────────┘  + 2s brand end-card (spiral, tagline, CTA)
 
@@ -105,59 +106,6 @@ def spiral_svg(size=120):
     </svg>"""
 
 
-def window_geometry(vid_w, vid_h):
-    """Fit the recording into the frame leaving room for hook (top) and pill
-    (bottom). Returns (x, y, w, h) of the video window, even-dimensioned."""
-    # top=460: hook text starts at 260px (pushed down to clear TikTok's own top
-    # UI chrome — search bar/back button — which was colliding with text at the
-    # old top:96px) and can wrap to 2-3 lines at font-size 64/line-height 1.08
-    # (~69px/line), so the window must start well after that, not at the old 320.
-    top, bottom, side = 460, 150, 60
-    max_h = H - top - bottom
-    max_w = W - 2 * side
-    scale = min(max_w / vid_w, max_h / vid_h)
-    w = int(vid_w * scale) // 2 * 2
-    h = int(vid_h * scale) // 2 * 2
-    x = (W - w) // 2
-    y = top + (max_h - h) // 2
-    return x, y, w, h
-
-
-def frame_html(hook, x, y, w, h):
-    """Branded frame with a TRANSPARENT rounded window (box-shadow spotlight
-    trick) — the real screencast shows through underneath."""
-    r = 46
-    return f"""<!doctype html><meta charset="utf-8"><style>
-    *{{margin:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}}
-    html,body{{width:{W}px;height:{H}px;overflow:hidden;background:transparent}}
-    .win{{position:absolute;left:{x}px;top:{y}px;width:{w}px;height:{h}px;
-      border-radius:{r}px;background:transparent;
-      box-shadow:0 0 0 9999px {BG};}}
-    .glowA,.glowB{{position:absolute;border-radius:50%;filter:blur(2px);z-index:2;pointer-events:none}}
-    .glowA{{left:-180px;top:-160px;width:760px;height:640px;
-      background:radial-gradient(closest-side, rgba(124,92,255,.32), transparent)}}
-    .glowB{{right:-160px;bottom:-140px;width:700px;height:600px;
-      background:radial-gradient(closest-side, rgba(63,169,255,.22), transparent)}}
-    .ring{{position:absolute;left:{x-3}px;top:{y-3}px;width:{w+6}px;height:{h+6}px;
-      border-radius:{r+3}px;border:3px solid rgba(124,92,255,.55);
-      box-shadow:0 0 44px rgba(124,92,255,.45), inset 0 0 22px rgba(124,92,255,.18);z-index:3}}
-    .hook{{position:absolute;left:60px;right:60px;top:260px;z-index:4;text-align:center;
-      font-family:-apple-system,'SF Pro Display','Helvetica Neue',Arial,sans-serif;
-      font-size:64px;font-weight:800;line-height:1.08;letter-spacing:-.5px;color:{INK};
-      text-shadow:0 4px 30px rgba(0,0,0,.8)}}
-    .pill{{position:absolute;left:50%;transform:translateX(-50%);bottom:52px;z-index:4;
-      display:flex;align-items:center;gap:14px;padding:16px 30px;border-radius:999px;
-      background:rgba(18,15,26,.92);border:1px solid #2a2440;
-      font-family:-apple-system,'SF Pro Display','Helvetica Neue',Arial,sans-serif;
-      font-size:30px;font-weight:700;color:{INK}}}
-    .pill svg{{width:38px;height:38px}}
-    .pill .dim{{color:#9a96a8;font-weight:600}}
-    </style>
-    <div class="win"></div>
-    <div class="glowA"></div><div class="glowB"></div>
-    <div class="ring"></div>
-    <div class="hook">{hook}</div>
-    <div class="pill">{spiral_svg(38)} Revert <span class="dim">· gorevert.com</span></div>"""
 
 
 def endcard_html():
@@ -183,20 +131,35 @@ def endcard_html():
 
 
 def overlay_html(hook, with_pill=True):
-    """Full-bleed branding overlay for AI-generated clips: readability scrims,
-    hook headline top, logo pill bottom. Transparent everywhere else."""
+    """Full-bleed branding overlay: hook caption CENTERED over the footage
+    (meme-caption style — user-requested redesign, July 14), with a dark scrim
+    band across the vertical middle so it stays readable against any footage
+    brightness. Logo pill bottom. Transparent everywhere else.
+
+    Rotating hooks vary widely in length, so font size + scrim height scale
+    down for longer text (same principle as creative.py's headline scaling —
+    a fixed huge size overflowed/clipped for anything longer than ~2 short words).
+    """
+    base = 68
+    if len(hook) > 90:
+        base = 42
+    elif len(hook) > 55:
+        base = 52
+    elif len(hook) > 30:
+        base = 60
+    scrim_h = min(760, 260 + base * 4)  # roomier scrim for bigger/longer text
     pill = f"""<div class="pill">{spiral_svg(38)} Revert <span class="dim">· gorevert.com</span></div>""" if with_pill else ""
     return f"""<!doctype html><meta charset="utf-8"><style>
     *{{margin:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}}
     html,body{{width:{W}px;height:{H}px;overflow:hidden;background:transparent}}
-    .scrimT{{position:absolute;left:0;top:0;right:0;height:480px;
-      background:linear-gradient(180deg, rgba(2,2,8,.82), rgba(2,2,8,0))}}
-    .scrimB{{position:absolute;left:0;bottom:0;right:0;height:260px;
-      background:linear-gradient(0deg, rgba(2,2,8,.72), rgba(2,2,8,0))}}
-    .hook{{position:absolute;left:60px;right:60px;top:260px;text-align:center;
-      font-family:-apple-system,'SF Pro Display','Helvetica Neue',Arial,sans-serif;
-      font-size:64px;font-weight:800;line-height:1.08;letter-spacing:-.5px;color:{INK};
-      text-shadow:0 4px 30px rgba(0,0,0,.85)}}
+    .scrimC{{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);
+      height:{scrim_h}px;
+      background:linear-gradient(180deg, rgba(2,2,8,0), rgba(2,2,8,.72) 22%,
+        rgba(2,2,8,.72) 78%, rgba(2,2,8,0))}}
+    .hook{{position:absolute;left:60px;right:60px;top:50%;transform:translateY(-50%);
+      text-align:center;font-family:-apple-system,'SF Pro Display','Helvetica Neue',Arial,sans-serif;
+      font-size:{base}px;font-weight:800;line-height:1.12;letter-spacing:-.5px;color:{INK};
+      text-shadow:0 4px 30px rgba(0,0,0,.9)}}
     .pill{{position:absolute;left:50%;transform:translateX(-50%);bottom:52px;
       display:flex;align-items:center;gap:14px;padding:16px 30px;border-radius:999px;
       background:rgba(18,15,26,.92);border:1px solid #2a2440;
@@ -205,7 +168,7 @@ def overlay_html(hook, with_pill=True):
     .pill svg{{width:38px;height:38px}}
     .pill .dim{{color:#9a96a8;font-weight:600}}
     </style>
-    <div class="scrimT"></div><div class="scrimB"></div>
+    <div class="scrimC"></div>
     <div class="hook">{hook}</div>
     {pill}"""
 
@@ -264,30 +227,32 @@ def find_music():
 
 
 def compose(hook, screencast, out_path, workdir=None):
-    """Build the final TikTok clip: framed real screencast + hook + end card."""
+    """Build the final TikTok clip: real screencast, full-bleed, hook caption
+    centered over the footage (meme-caption style), + end card. Same visual
+    treatment as brand_full_bleed (Kling path) — the two now share overlay_html
+    — but adds 1.25x pacing since real recordings have dead "thinking..." beats
+    an AI clip doesn't."""
     ff = ffmpeg_bin()
     vid_w, vid_h, dur, has_audio = probe(screencast)
-    x, y, w, h = window_geometry(vid_w, vid_h)
     wd = workdir or tempfile.mkdtemp(prefix="revedit_")
-    frame_png = render_png(frame_html(hook, x, y, w, h), os.path.join(wd, "frame.png"), transparent=True)
+    over_png = render_png(overlay_html(hook), os.path.join(wd, "overlay.png"), transparent=True)
     end_png = render_png(endcard_html(), os.path.join(wd, "endcard.png"))
 
     main_secs = dur / SPEED
     music = find_music()
 
-    # video graph: black canvas -> screencast (sped, scaled, positioned) -> frame overlay
+    # scale-to-cover + center-crop the recording to fill the frame, sped up, then overlay
     fc = (
-        f"color=c={BG}:s={W}x{H}:r={FPS}:d={main_secs:.3f}[bg];"
-        f"[0:v]setpts=PTS/{SPEED},scale={w}:{h},fps={FPS}[vid];"
-        f"[bg][vid]overlay={x}:{y}:shortest=1[comp];"
-        f"[comp][1:v]overlay=0:0[main];"
+        f"[0:v]setpts=PTS/{SPEED},scale={W}:{H}:force_original_aspect_ratio=increase,"
+        f"crop={W}:{H},fps={FPS}[vid];"
+        f"[vid][1:v]overlay=0:0[main];"
         f"[2:v]fps={FPS},scale={W}:{H}[end];"
         f"[main][end]concat=n=2:v=1:a=0[v]"
     )
     total = main_secs + ENDCARD_SECS
     cmd = [ff, "-y", "-v", "error",
            "-i", screencast,                                            # 0: recording
-           "-loop", "1", "-t", f"{main_secs:.3f}", "-i", frame_png,     # 1: branded frame
+           "-loop", "1", "-t", f"{main_secs:.3f}", "-i", over_png,      # 1: caption overlay
            "-loop", "1", "-t", str(ENDCARD_SECS), "-i", end_png]        # 2: end card
 
     if music:
