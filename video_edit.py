@@ -25,7 +25,7 @@ Importable:  from video_edit import compose
 
 Stdlib only (+ headless Chrome for overlays, ffmpeg for the edit).
 """
-import os, sys, json, shutil, subprocess, tempfile
+import os, sys, json, shutil, subprocess, tempfile, time
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 BRAND = json.load(open(os.path.join(ROOT, "brand.json")))
@@ -54,16 +54,31 @@ def ffprobe_bin():
     raise RuntimeError("ffprobe not found")
 
 
+def _run_ffprobe(args, retries=3, delay=3):
+    """Retry wrapper: this is the pipeline's first disk-reading subprocess call
+    each day, and it has intermittently failed (exit 1, no stderr) specifically
+    right after the Mac wakes from deep sleep shortly before the 9am cron fire
+    (observed twice — confirmed via pmset wake logs lining up with the failure
+    window; no TCC/permission denial found; the exact same command always
+    succeeds when run manually minutes later). A transient post-wake retry is
+    far cheaper than losing the free screencast path to Kling every time."""
+    last = None
+    for attempt in range(retries):
+        try:
+            return subprocess.run(args, capture_output=True, text=True, check=True)
+        except subprocess.CalledProcessError as e:
+            last = e
+            if attempt < retries - 1:
+                time.sleep(delay)
+    raise last
+
+
 def probe(path):
-    out = subprocess.run(
-        [ffprobe_bin(), "-v", "error", "-select_streams", "v:0",
-         "-show_entries", "stream=width,height,duration", "-of", "json", path],
-        capture_output=True, text=True, check=True)
+    out = _run_ffprobe([ffprobe_bin(), "-v", "error", "-select_streams", "v:0",
+                        "-show_entries", "stream=width,height,duration", "-of", "json", path])
     s = json.loads(out.stdout)["streams"][0]
-    has_audio = bool(subprocess.run(
-        [ffprobe_bin(), "-v", "error", "-select_streams", "a",
-         "-show_entries", "stream=codec_name", "-of", "csv=p=0", path],
-        capture_output=True, text=True).stdout.strip())
+    has_audio = bool(_run_ffprobe([ffprobe_bin(), "-v", "error", "-select_streams", "a",
+                                   "-show_entries", "stream=codec_name", "-of", "csv=p=0", path]).stdout.strip())
     return int(s["width"]), int(s["height"]), float(s.get("duration") or 0), has_audio
 
 
