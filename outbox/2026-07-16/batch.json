@@ -1,0 +1,66 @@
+{
+  "date": "2026-07-16",
+  "llm": false,
+  "items": {
+    "tiktok": {
+      "file": "tiktok.md",
+      "channel": "tiktok",
+      "angle": "translator",
+      "audience": "learners",
+      "hook": "exam brain can't write texts. good thing it doesn't have to",
+      "caption": "exam brain can't write texts. good thing it doesn't have to Free on iOS and Android \u2192 gorevert.com\n#aikeyboard #AITools #iphonetips #ProductivityTok #GenZ"
+    },
+    "x": {
+      "file": "x.md",
+      "channel": "x",
+      "angle": "ar-lens",
+      "audience": "learners",
+      "hook": "i screenshot the chat, tap once, and i'm done.",
+      "caption": "i screenshot the chat, tap once, and i'm done.\n\nRevert is the AI keyboard that reads your chat and writes the perfect reply. Screenshot the conversation, tap a reply, hit send.\n\nGet it free \u2192 gorevert.com #buildinpublic #DatingTok"
+    },
+    "reddit": {
+      "file": "reddit.md",
+      "channel": "reddit",
+      "angle": "tone-shift",
+      "audience": "pros",
+      "hook": "",
+      "caption": "Revert is the AI keyboard that reads your chat and writes the perfect reply. Screenshot the conversation, tap a reply, hit send. It's free (50 replies/day), iOS + Android: https://gorevert.com. Solo dev \u2014 would genuinely love feedback on what would make you keep a keyboard like this installed.",
+      "title": "I built an AI keyboard that reads your chat screenshots and writes the reply \u2014 feedback welcome",
+      "subreddit": "sideproject"
+    },
+    "instagram": {
+      "file": "instagram.md",
+      "channel": "instagram",
+      "angle": "read-the-room",
+      "audience": "dating",
+      "hook": "drafted 9 replies, deleted 9, tapped once",
+      "caption": "drafted 9 replies, deleted 9, tapped once\n\nRevert is the AI keyboard that reads your chat and writes the perfect reply. Screenshot the conversation, tap a reply, hit send.\n\nStop typing. Start tapping. Link in bio.\n\n#GenZ #appstore #AITools #DatingTok #TextingTips"
+    },
+    "youtube_shorts": {
+      "file": "youtube_shorts.md",
+      "channel": "youtube_shorts",
+      "angle": "overthinker",
+      "audience": "anxious",
+      "hook": "",
+      "caption": "This AI keyboard writes your texts for you. Download Revert free. No card, no catch. #AItools #DatingTok #Shorts #AIkeyboard"
+    },
+    "email": {
+      "file": "email.md",
+      "channel": "email",
+      "angle": "before-after",
+      "audience": "dating"
+    },
+    "aso": {
+      "file": "aso.md",
+      "channel": "aso",
+      "angle": "dumb-keyboard",
+      "audience": "pros"
+    },
+    "blog": {
+      "file": "blog.md",
+      "channel": "blog",
+      "angle": "work-polish",
+      "audience": "pros"
+    }
+  }
+}
