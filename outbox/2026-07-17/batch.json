@@ -1,0 +1,66 @@
+{
+  "date": "2026-07-17",
+  "llm": false,
+  "items": {
+    "tiktok": {
+      "file": "tiktok.md",
+      "channel": "tiktok",
+      "angle": "read-the-room",
+      "audience": "dating",
+      "hook": "she said 'we need to talk.' my keyboard said 'i got you.'",
+      "caption": "she said 'we need to talk.' my keyboard said 'i got you.' Download Revert free. No card, no catch.\n#iphonetips #ProductivityTok #GenZ #fyp #DatingTok"
+    },
+    "x": {
+      "file": "x.md",
+      "channel": "x",
+      "angle": "speed",
+      "audience": "pros",
+      "hook": "the situationship is losing and he doesn't know why",
+      "caption": "the situationship is losing and he doesn't know why\n\nRevert is the AI keyboard that reads your chat and writes the perfect reply. Screenshot the conversation, tap a reply, hit send.\n\nStop typing. Start tapping. Link in bio. #indiehackers #AI"
+    },
+    "reddit": {
+      "file": "reddit.md",
+      "channel": "reddit",
+      "angle": "overthinker",
+      "audience": "anxious",
+      "hook": "",
+      "caption": "Revert is the AI keyboard that reads your chat and writes the perfect reply. Screenshot the conversation, tap a reply, hit send. It's free (50 replies/day), iOS + Android: https://gorevert.com. Solo dev \u2014 would genuinely love feedback on what would make you keep a keyboard like this installed.",
+      "title": "I built an AI keyboard that reads your chat screenshots and writes the reply \u2014 feedback welcome",
+      "subreddit": "sideproject"
+    },
+    "instagram": {
+      "file": "instagram.md",
+      "channel": "instagram",
+      "angle": "work-polish",
+      "audience": "pros",
+      "hook": "turning 'hey' into an actual conversation, one tap at a time.",
+      "caption": "turning 'hey' into an actual conversation, one tap at a time.\n\nRevert is the AI keyboard that reads your chat and writes the perfect reply. Screenshot the conversation, tap a reply, hit send.\n\nFree on iOS and Android \u2192 gorevert.com\n\n#AITools #DatingTok #TextingTips #aikeyboard #iphoneapps"
+    },
+    "youtube_shorts": {
+      "file": "youtube_shorts.md",
+      "channel": "youtube_shorts",
+      "angle": "before-after",
+      "audience": "dating",
+      "hook": "",
+      "caption": "This AI keyboard writes your texts for you. Try it free, 50 replies a day \u2192 gorevert.com #AItools #DatingTok #Shorts #AIkeyboard"
+    },
+    "email": {
+      "file": "email.md",
+      "channel": "email",
+      "angle": "esl-confidence",
+      "audience": "esl"
+    },
+    "aso": {
+      "file": "aso.md",
+      "channel": "aso",
+      "angle": "free-tier",
+      "audience": "anxious"
+    },
+    "blog": {
+      "file": "blog.md",
+      "channel": "blog",
+      "angle": "dumb-keyboard",
+      "audience": "pros"
+    }
+  }
+}
