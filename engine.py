@@ -81,14 +81,22 @@ def audience_who(key):
 
 
 # ── trend-aware hashtags (deterministic daily rotation, stdlib-only) ─────────
-# The brand library gives each channel a FIXED hashtag pool. Posting the whole
-# pool, in the same order, every single day looks botted and gets down-ranked.
+# The brand library gives each channel a small evergreen hashtag pool. Posting the
+# whole pool, in the same order, every single day looks botted and gets down-ranked.
 # rotate() already deterministically picks a date-dependent window of any list, so
 # we use it to surface a fresh, ordered subset per channel per date. Same date =>
 # same tags (reproducible), different dates => different tags (so they "vary").
 # How many tags to surface per channel (platform-appropriate; <= pool size).
 HASHTAG_COUNT = {
     "tiktok": 5, "instagram": 5, "youtube_shorts": 4, "x": 2,
+}
+# Of HASHTAG_COUNT, how many come from the EVERGREEN pool vs the day's AUDIENCE
+# pool (audience_hashtags in brand.json). July 16 fix: an 8-tag evergreen-only
+# pool gave ~60% day-to-day overlap by pure combinatorics (choose-5-of-8) — the
+# audience split gives real variety AND ties tags to what that post is actually
+# about (dating vs pros vs anxious vs ESL vs learners), not one shared bucket.
+HASHTAG_EVERGREEN = {
+    "tiktok": 2, "instagram": 2, "youtube_shorts": 2, "x": 1,
 }
 
 
@@ -111,15 +119,29 @@ def _trend_tags(channel):
     return tags
 
 
-def hashtags(date_str, channel):
-    """Date-rotating subset of the channel's pool, blended with 1-2 timely LLM tags
-    when REVERT_LLM_KEY is set. Pure deterministic rotation otherwise (free, no key)."""
-    pool = BRAND["channels"].get(channel, {}).get("hashtags", [])
-    if not pool:
-        return ""
-    n = HASHTAG_COUNT.get(channel, len(pool))
+def hashtags(date_str, channel, audience=None):
+    """Blend of the channel's small evergreen pool + that day's AUDIENCE-specific
+    pool (see audience_hashtags in brand.json), each independently date-rotated
+    so the mix genuinely changes daily instead of drawing from one shared bucket.
+    Falls back to evergreen-only if no audience is given/matched. Tops up with
+    1-2 timely LLM tags when REVERT_LLM_KEY is set."""
+    evergreen_pool = BRAND["channels"].get(channel, {}).get("hashtags", [])
+    n = HASHTAG_COUNT.get(channel, len(evergreen_pool))
+    n_evergreen = min(HASHTAG_EVERGREEN.get(channel, n), n, len(evergreen_pool))
     salt = ANGLE_SALT.get(channel, 0)  # two channels sharing a pool size still differ
-    base = rotate(pool, date_str, n, salt)
+
+    base = rotate(evergreen_pool, date_str, n_evergreen, salt) if evergreen_pool else []
+
+    aud_pool = BRAND.get("audience_hashtags", {}).get(audience or "", [])
+    n_aud = n - len(base)
+    if aud_pool and n_aud > 0:
+        # different salt than the evergreen pick so the SAME audience on two
+        # different dates doesn't always surface the same niche subset either
+        base += rotate(aud_pool, date_str, n_aud, salt + 100)
+    elif n_aud > 0 and evergreen_pool:
+        # no audience match (e.g. no angle for this channel) — top up from evergreen
+        base += rotate(evergreen_pool, date_str, min(n_aud, len(evergreen_pool)), salt + 50)
+
     lowers = {b.lower() for b in base}
     timely = [t for t in _trend_tags(channel) if t.lower() not in lowers]
     return " ".join(base + timely)
@@ -356,11 +378,13 @@ def captions(d):
     """Clean, postable caption per auto-post channel — built directly from the brand
     library (not scraped from the human .md briefs), so what gets posted is always tidy."""
     one = PROD["one_liner"]
-    tt = hashtags(d, "tiktok")
-    ig = hashtags(d, "instagram")
-    yt = hashtags(d, "youtube_shorts")
-    xt = hashtags(d, "x")  # X: 1-2 hashtags measurably beats zero (+21% engagement,
-                            # 2026 data) but 3+ actively hurts reach — stay at 2 max.
+    # each channel's OWN audience for today (same angle-pick that drives its copy),
+    # so hashtags actually match who that specific post is talking to
+    tt = hashtags(d, "tiktok", pick_angle(d, "tiktok")["audience"])
+    ig = hashtags(d, "instagram", pick_angle(d, "instagram")["audience"])
+    yt = hashtags(d, "youtube_shorts", pick_angle(d, "youtube_shorts")["audience"])
+    xt = hashtags(d, "x", pick_angle(d, "x")["audience"])  # X: 1-2 hashtags measurably
+                            # beats zero (+21% engagement, 2026 data) but 3+ hurts reach.
     h_x  = pick(BRAND['hooks'], d, 10)
     h_ig = pick(BRAND['hooks'], d, 3)
     h_tt = pick(BRAND['hooks'], d, 1)

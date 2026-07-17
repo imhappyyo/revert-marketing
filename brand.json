@@ -212,35 +212,37 @@
     "Download Revert free. No card, no catch.",
     "Get it free → gorevert.com"
   ],
+  "audience_hashtags": {
+    "_comment": "Per-audience niche pools (July 16 fix) — hashtags() blends a couple of these with each channel's small evergreen pool, keyed to THAT DAY's actual audience (same one driving the angle/hook), so hashtags actually vary by who the post targets instead of drawing from one shared 8-tag pool (was causing ~60% day-to-day overlap by pure combinatorics).",
+    "dating": ["#DatingTok", "#situationship", "#RizzTok", "#DatingAdvice", "#TextingTips", "#DatingApp"],
+    "esl": ["#ESL", "#LearnEnglish", "#EnglishTips", "#EnglishLearning", "#SpeakEnglish", "#EnglishPractice"],
+    "pros": ["#ProductivityTok", "#WorkTok", "#CareerTok", "#ProductivityHacks", "#WorkLife", "#HustleHard"],
+    "anxious": ["#Overthinking", "#MentalHealthTok", "#AnxietyTok", "#SelfCare", "#SocialAnxiety", "#Overthinker"],
+    "learners": ["#LanguageLearning", "#Polyglot", "#LearnALanguage", "#LanguageTok", "#Bilingual", "#TranslationTok"]
+  },
   "channels": {
     "tiktok": {
       "type": "short-video",
-      "specs": "9:16, 7-15s, hook in first 1.5s, captions on-screen, trending audio. Hashtag rule (2026): 3-5 tags max, ONE broad/discovery tag only (never stack #fyp+#viral+#trending — confuses the algorithm's targeting signal), rest niche+specific.",
+      "specs": "9:16, 7-15s, hook in first 1.5s, captions on-screen, trending audio. Hashtag rule (2026): 3-5 tags max, ONE broad/discovery tag only (never stack #fyp+#viral+#trending — confuses the algorithm's targeting signal), rest niche+specific. Evergreen pool below is blended with the day's AUDIENCE-specific pool (see audience_hashtags) — evergreen alone is NOT the full tag set.",
       "cadence_per_week": 5,
       "hashtags": [
         "#fyp",
-        "#DatingTok",
-        "#TextingTips",
         "#aikeyboard",
         "#AITools",
         "#iphonetips",
-        "#ProductivityTok",
         "#GenZ"
       ]
     },
     "instagram": {
       "type": "reel+carousel",
-      "specs": "9:16 Reels mirror TikTok; 4:5 carousels for before/after and tips. Hashtag rule (2026): Instagram enforces a 5-tag cap — use exactly 5 precise tags, never generic filler (#love/#instagood waste a slot); rotate selection per post rather than reusing the identical set.",
+      "specs": "9:16 Reels mirror TikTok; 4:5 carousels for before/after and tips. Hashtag rule (2026): Instagram enforces a 5-tag cap — use exactly 5 precise tags, never generic filler (#love/#instagood waste a slot); rotate selection per post rather than reusing the identical set. Evergreen pool below is blended with the day's AUDIENCE-specific pool (see audience_hashtags).",
       "cadence_per_week": 5,
       "hashtags": [
-        "#DatingTok",
-        "#TextingTips",
         "#aikeyboard",
         "#iphoneapps",
-        "#productivityapp",
-        "#GenZ",
         "#appstore",
-        "#AITools"
+        "#AITools",
+        "#GenZ"
       ]
     },
     "youtube_shorts": {
@@ -252,18 +254,16 @@
         "#AIkeyboard",
         "#iPhone",
         "#Android",
-        "#AItools",
-        "#DatingTok"
+        "#AItools"
       ]
     },
     "x": {
       "type": "text+clip",
-      "specs": "Hook line, optional clip/gif, 1 link max. Threads for before/after and build-in-public. Hashtag rule (2026): 1-2 tags ONLY — 3+ measurably cuts reach (-17% at 3, -40% at 5+); one broad + one niche is the highest-performing pattern, never lead the tweet with a hashtag (triggers spam filters).",
+      "specs": "Hook line, optional clip/gif, 1 link max. Threads for before/after and build-in-public. Hashtag rule (2026): 1-2 tags ONLY — 3+ measurably cuts reach (-17% at 3, -40% at 5+); one broad + one niche is the highest-performing pattern, never lead the tweet with a hashtag (triggers spam filters). The single niche slot pulls from the day's audience pool.",
       "cadence_per_week": 7,
       "hashtags": [
         "#AI",
         "#buildinpublic",
-        "#DatingTok",
         "#indiehackers"
       ]
     },
