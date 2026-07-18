@@ -492,3 +492,36 @@ Batch ready: marketing/outbox/2026-07-17/  (LLM mode: template)
 
 Queue: outbox/2026-07-17/QUEUE.md  (provider=upload_post, live=True)  perf: +5 row(s) -> performance.csv
 
+fatal: could not read Username for 'https://github.com': Device not configured
+──────── 2026-07-18 13:11:24 ────────
+  ✓ tiktok         -> outbox/2026-07-18/tiktok.md
+  ✓ x              -> outbox/2026-07-18/x.md
+  ✓ reddit         -> outbox/2026-07-18/reddit.md
+  ✓ instagram      -> outbox/2026-07-18/instagram.md
+  ✓ youtube_shorts -> outbox/2026-07-18/youtube_shorts.md
+  ✓ email          -> outbox/2026-07-18/email.md
+  ✓ aso            -> outbox/2026-07-18/aso.md
+  ✓ blog           -> outbox/2026-07-18/blog.md
+
+Batch ready: marketing/outbox/2026-07-18/  (LLM mode: template)
+[video_gen] real-UI edit: whatsapp_replies_flow.mp4  hook: what if your keyboard understood the conversation?
+✓ /Users/praveenrathi/Desktop/revert/marketing/outbox/2026-07-18/video/tiktok.mp4
+✓ /Users/praveenrathi/Desktop/revert/marketing/outbox/2026-07-18/video/youtube_shorts.mp4 (reused)
+  ✓ instagram_4x5    1080x1350 -> outbox/2026-07-18/img/instagram_4x5.png
+  ✓ story_9x16       1080x1920 -> outbox/2026-07-18/img/story_9x16.png
+  ✓ square_1x1       1080x1080 -> outbox/2026-07-18/img/square_1x1.png
+  ✓ x_card_16x9      1600x900 -> outbox/2026-07-18/img/x_card_16x9.png
+  ✓ hook_9x16        1080x1920 -> outbox/2026-07-18/img/hook_9x16.png
+
+5 graphic(s) rendered (native social res) -> outbox/2026-07-18/img/
+  ✓ tiktok         POSTED -> tiktok
+  ✓ x              POSTED -> twitter
+  ✗ reddit         failed: {"success":false,"message":"None of the requested platforms are valid for profile \"revertabio\". Profile revertabio has no Reddit account configured","invalid_platforms":{"reddit":"Profile revertabio
+  ✓ instagram      POSTED -> instagram
+  ✗ youtube_shorts failed: {"success":false,"message":"None of the requested platforms are valid for profile \"revertabio\". Profile revertabio has no Youtube account configured","invalid_platforms":{"youtube":"Profile revertab
+  · email          non-aggregator (see email.md)
+  · aso            non-aggregator (see aso.md)
+  · blog           non-aggregator (see blog.md)
+
+Queue: outbox/2026-07-18/QUEUE.md  (provider=upload_post, live=True)  perf: +5 row(s) -> performance.csv
+
