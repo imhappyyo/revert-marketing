@@ -1,0 +1,66 @@
+{
+  "date": "2026-07-21",
+  "llm": false,
+  "items": {
+    "tiktok": {
+      "file": "tiktok.md",
+      "channel": "tiktok",
+      "angle": "privacy-vs-rivals",
+      "audience": "anxious",
+      "hook": "every other AI keyboard ships your texts to a server. this one doesn't.",
+      "caption": "every other AI keyboard ships your texts to a server. this one doesn't. Try it free, 50 replies a day \u2192 gorevert.com\n#aikeyboard #AITools #SocialAnxiety #Overthinker #Overthinking"
+    },
+    "x": {
+      "file": "x.md",
+      "channel": "x",
+      "angle": "build-in-public",
+      "audience": "pros",
+      "hook": "turning 'hey' into an actual conversation, one tap at a time.",
+      "caption": "turning 'hey' into an actual conversation, one tap at a time.\n\nRevert is the AI keyboard that reads your chat and writes the perfect reply. Screenshot the conversation, tap a reply, hit send.\n\nFree on iOS and Android \u2192 gorevert.com #buildinpublic #CareerTok"
+    },
+    "reddit": {
+      "file": "reddit.md",
+      "channel": "reddit",
+      "angle": "translator",
+      "audience": "learners",
+      "hook": "",
+      "caption": "Revert is the AI keyboard that reads your chat and writes the perfect reply. Screenshot the conversation, tap a reply, hit send. It's free (50 replies/day), iOS + Android: https://gorevert.com. Solo dev \u2014 would genuinely love feedback on what would make you keep a keyboard like this installed.",
+      "title": "I built an AI keyboard that reads your chat screenshots and writes the reply \u2014 feedback welcome",
+      "subreddit": "sideproject"
+    },
+    "instagram": {
+      "file": "instagram.md",
+      "channel": "instagram",
+      "angle": "tone-shift",
+      "audience": "pros",
+      "hook": "i let an AI handle my texts for a week. here's what happened.",
+      "caption": "i let an AI handle my texts for a week. here's what happened.\n\nRevert is the AI keyboard that reads your chat and writes the perfect reply. Screenshot the conversation, tap a reply, hit send.\n\nDownload Revert free. No card, no catch.\n\n#AITools #GenZ #ProductivityTok #WorkTok #CareerTok"
+    },
+    "youtube_shorts": {
+      "file": "youtube_shorts.md",
+      "channel": "youtube_shorts",
+      "angle": "read-the-room",
+      "audience": "dating",
+      "hook": "",
+      "caption": "This AI keyboard writes your texts for you. Get it free \u2192 gorevert.com #AItools #Shorts #situationship #RizzTok"
+    },
+    "email": {
+      "file": "email.md",
+      "channel": "email",
+      "angle": "work-polish",
+      "audience": "pros"
+    },
+    "aso": {
+      "file": "aso.md",
+      "channel": "aso",
+      "angle": "before-after",
+      "audience": "dating"
+    },
+    "blog": {
+      "file": "blog.md",
+      "channel": "blog",
+      "angle": "overthinker",
+      "audience": "anxious"
+    }
+  }
+}
