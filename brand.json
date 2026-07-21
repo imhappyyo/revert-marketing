@@ -214,11 +214,56 @@
   ],
   "audience_hashtags": {
     "_comment": "Per-audience niche pools (July 16 fix) — hashtags() blends a couple of these with each channel's small evergreen pool, keyed to THAT DAY's actual audience (same one driving the angle/hook), so hashtags actually vary by who the post targets instead of drawing from one shared 8-tag pool (was causing ~60% day-to-day overlap by pure combinatorics).",
-    "dating": ["#DatingTok", "#situationship", "#RizzTok", "#DatingAdvice", "#TextingTips", "#DatingApp"],
-    "esl": ["#ESL", "#LearnEnglish", "#EnglishTips", "#EnglishLearning", "#SpeakEnglish", "#EnglishPractice"],
-    "pros": ["#ProductivityTok", "#WorkTok", "#CareerTok", "#ProductivityHacks", "#WorkLife", "#HustleHard"],
-    "anxious": ["#Overthinking", "#MentalHealthTok", "#AnxietyTok", "#SelfCare", "#SocialAnxiety", "#Overthinker"],
-    "learners": ["#LanguageLearning", "#Polyglot", "#LearnALanguage", "#LanguageTok", "#Bilingual", "#TranslationTok"]
+    "dating": [
+      "#Situationship",
+      "#DryTexter",
+      "#LeftOnRead",
+      "#RizzLines",
+      "#DatingAppTips",
+      "#AnxiousAttachment",
+      "#FlirtingTips",
+      "#ModernDating"
+    ],
+    "esl": [
+      "#EnglishFluency",
+      "#EnglishConversation",
+      "#AmericanEnglish",
+      "#EnglishSpeakingPractice",
+      "#GenZEnglish",
+      "#SpokenEnglish",
+      "#EnglishIdioms",
+      "#EnglishTips"
+    ],
+    "pros": [
+      "#CorporateGirlie",
+      "#OfficeHumor",
+      "#CorporateMemes",
+      "#9to5Life",
+      "#ProductivityTok",
+      "#CorporateHumor",
+      "#EmailEtiquette",
+      "#WorkTok"
+    ],
+    "anxious": [
+      "#AnxiousTexter",
+      "#TextingAnxiety",
+      "#OverthinkersAnonymous",
+      "#AnxiousAttachment",
+      "#TalkingStage",
+      "#SocialAnxiety",
+      "#RelatableMentalHealth",
+      "#Overthinking"
+    ],
+    "learners": [
+      "#LangTok",
+      "#LanguageExchange",
+      "#BilingualProblems",
+      "#PolyglotProblems",
+      "#LanguageLover",
+      "#BilingualLife",
+      "#LanguageNerd",
+      "#Polyglot"
+    ]
   },
   "channels": {
     "tiktok": {
@@ -226,11 +271,11 @@
       "specs": "9:16, 7-15s, hook in first 1.5s, captions on-screen, trending audio. Hashtag rule (2026): 3-5 tags max, ONE broad/discovery tag only (never stack #fyp+#viral+#trending — confuses the algorithm's targeting signal), rest niche+specific. Evergreen pool below is blended with the day's AUDIENCE-specific pool (see audience_hashtags) — evergreen alone is NOT the full tag set.",
       "cadence_per_week": 5,
       "hashtags": [
-        "#techtok",
         "#aikeyboard",
         "#AITools",
-        "#iphonetips",
-        "#GenZ"
+        "#TextingTips",
+        "#HowToText",
+        "#WhatToText"
       ]
     },
     "instagram": {
@@ -239,10 +284,10 @@
       "cadence_per_week": 5,
       "hashtags": [
         "#aikeyboard",
-        "#iphoneapps",
-        "#appstore",
         "#AITools",
-        "#GenZ"
+        "#TextingTips",
+        "#TextingHumor",
+        "#CommunicationSkills"
       ]
     },
     "youtube_shorts": {
@@ -250,11 +295,11 @@
       "specs": "9:16, <60s, keyword-rich title, repurpose TikToks",
       "cadence_per_week": 3,
       "hashtags": [
-        "#Shorts",
-        "#AIkeyboard",
-        "#iPhone",
-        "#Android",
-        "#AItools"
+        "#aikeyboard",
+        "#AITools",
+        "#texting",
+        "#TextingTips",
+        "#productivity"
       ]
     },
     "x": {
@@ -262,9 +307,9 @@
       "specs": "Hook line, optional clip/gif, 1 link max. Threads for before/after and build-in-public. Hashtag rule (2026): 1-2 tags ONLY — 3+ measurably cuts reach (-17% at 3, -40% at 5+); one broad + one niche is the highest-performing pattern, never lead the tweet with a hashtag (triggers spam filters). The single niche slot pulls from the day's audience pool.",
       "cadence_per_week": 7,
       "hashtags": [
-        "#AI",
-        "#buildinpublic",
-        "#indiehackers"
+        "#AITools",
+        "#aikeyboard",
+        "#texting"
       ]
     },
     "reddit": {
