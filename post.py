@@ -245,8 +245,19 @@ def main():
                     if not media_url:
                         raise RuntimeError("set REVERT_MEDIA_BASE (public URL) for the ayrshare path")
                     res = ayrshare(caption, platform, media_url)
-                print(f"  ✓ {ch:14s} POSTED -> {platform}")
-                q += [f"\n## {ch} POSTED ✓  {json.dumps(res)[:200]}"]
+                # HONESTY CHECK: upload-post returns success:true even when TikTok
+                # actually shunted the video to the app Inbox as an unpublished draft
+                # (rate limit / non-DIRECT fallback) — a draft has ZERO public surface
+                # and cannot get a single view. Don't report that as "POSTED". Detect
+                # the tell-tale strings and flag it as NOT LIVE so run.log tells the truth.
+                blob = json.dumps(res).lower()
+                not_live = any(s in blob for s in ("inbox", "no public url", "still processing"))
+                if not_live:
+                    print(f"  ⚠ {ch:14s} NOT LIVE (Inbox/draft — needs manual publish in app)")
+                    q += [f"\n## {ch} ⚠ NOT LIVE — landed in Inbox/draft, publish manually  {json.dumps(res)[:200]}"]
+                else:
+                    print(f"  ✓ {ch:14s} POSTED -> {platform}")
+                    q += [f"\n## {ch} POSTED ✓  {json.dumps(res)[:200]}"]
             except (urllib.error.URLError, urllib.error.HTTPError, RuntimeError) as e:
                 detail = e.read().decode(errors="replace")[:200] if hasattr(e, "read") else str(e)
                 print(f"  ✗ {ch:14s} failed: {detail}")

@@ -226,7 +226,7 @@
       "specs": "9:16, 7-15s, hook in first 1.5s, captions on-screen, trending audio. Hashtag rule (2026): 3-5 tags max, ONE broad/discovery tag only (never stack #fyp+#viral+#trending — confuses the algorithm's targeting signal), rest niche+specific. Evergreen pool below is blended with the day's AUDIENCE-specific pool (see audience_hashtags) — evergreen alone is NOT the full tag set.",
       "cadence_per_week": 5,
       "hashtags": [
-        "#fyp",
+        "#techtok",
         "#aikeyboard",
         "#AITools",
         "#iphonetips",
