@@ -651,3 +651,98 @@ Batch ready: marketing/outbox/2026-07-21/  (LLM mode: template)
 
 Queue: outbox/2026-07-21/QUEUE.md  (provider=upload_post, live=True)  perf: +5 row(s) -> performance.csv
 
+fatal: could not read Username for 'https://github.com': Device not configured
+──────── 2026-07-22 09:46:08 ────────
+  ✓ tiktok         -> outbox/2026-07-22/tiktok.md
+  ✓ x              -> outbox/2026-07-22/x.md
+  ✓ reddit         -> outbox/2026-07-22/reddit.md
+  ✓ instagram      -> outbox/2026-07-22/instagram.md
+  ✓ youtube_shorts -> outbox/2026-07-22/youtube_shorts.md
+  ✓ email          -> outbox/2026-07-22/email.md
+  ✓ aso            -> outbox/2026-07-22/aso.md
+  ✓ blog           -> outbox/2026-07-22/blog.md
+
+Batch ready: marketing/outbox/2026-07-22/  (LLM mode: template)
+[genvideo] submitted task 908759928339300393, polling...
+[genvideo] status=submitted, waiting 10s...
+[genvideo] status=processing, waiting 10s...
+[genvideo] status=processing, waiting 10s...
+[genvideo] status=processing, waiting 10s...
+[genvideo] status=processing, waiting 10s...
+[genvideo] status=processing, waiting 10s...
+[genvideo] status=processing, waiting 10s...
+[genvideo] status=processing, waiting 10s...
+[genvideo] status=processing, waiting 10s...
+[genvideo] status=processing, waiting 10s...
+[video_gen] Kling scene: sidewalk_freeze
+✓ /Users/praveenrathi/Desktop/revert/marketing/outbox/2026-07-22/video/tiktok.mp4
+✓ /Users/praveenrathi/Desktop/revert/marketing/outbox/2026-07-22/video/youtube_shorts.mp4 (reused)
+  ✓ instagram_4x5    1080x1350 -> outbox/2026-07-22/img/instagram_4x5.png
+  ✓ story_9x16       1080x1920 -> outbox/2026-07-22/img/story_9x16.png
+  ✓ square_1x1       1080x1080 -> outbox/2026-07-22/img/square_1x1.png
+  ✓ x_card_16x9      1600x900 -> outbox/2026-07-22/img/x_card_16x9.png
+  ✓ hook_9x16        1080x1920 -> outbox/2026-07-22/img/hook_9x16.png
+
+5 graphic(s) rendered (native social res) -> outbox/2026-07-22/img/
+Traceback (most recent call last):
+  File "/Users/praveenrathi/Desktop/revert/marketing/post.py", line 301, in <module>
+    main()
+  File "/Users/praveenrathi/Desktop/revert/marketing/post.py", line 242, in main
+    res = upload_post_video(caption, platform, local_video, item.get("hook") or caption[:150])
+  File "/Users/praveenrathi/Desktop/revert/marketing/post.py", line 173, in upload_post_video
+    with urllib.request.urlopen(req, timeout=300) as r:
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 214, in urlopen
+    return opener.open(url, data, timeout)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 517, in open
+    response = self._open(req, data)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 534, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 494, in _call_chain
+    result = func(*args)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 1389, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 1350, in do_open
+    r = h.getresponse()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 1349, in getresponse
+    response.begin()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 316, in begin
+    version, status, reason = self._read_status()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 277, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+socket.timeout: The read operation timed out
+──────── 2026-07-22 11:06:11 ────────
+  ✓ tiktok         -> outbox/2026-07-22/tiktok.md
+  ✓ x              -> outbox/2026-07-22/x.md
+  ✓ reddit         -> outbox/2026-07-22/reddit.md
+  ✓ instagram      -> outbox/2026-07-22/instagram.md
+  ✓ youtube_shorts -> outbox/2026-07-22/youtube_shorts.md
+  ✓ email          -> outbox/2026-07-22/email.md
+  ✓ aso            -> outbox/2026-07-22/aso.md
+  ✓ blog           -> outbox/2026-07-22/blog.md
+
+Batch ready: marketing/outbox/2026-07-22/  (LLM mode: template)
+[video_gen] /Users/praveenrathi/Desktop/revert/marketing/outbox/2026-07-22/video/tiktok.mp4 already exists — skipping
+  ✓ instagram_4x5    1080x1350 -> outbox/2026-07-22/img/instagram_4x5.png
+  ✓ story_9x16       1080x1920 -> outbox/2026-07-22/img/story_9x16.png
+  ✓ square_1x1       1080x1080 -> outbox/2026-07-22/img/square_1x1.png
+  ✓ x_card_16x9      1600x900 -> outbox/2026-07-22/img/x_card_16x9.png
+  ✓ hook_9x16        1080x1920 -> outbox/2026-07-22/img/hook_9x16.png
+
+5 graphic(s) rendered (native social res) -> outbox/2026-07-22/img/
+  ✓ tiktok         POSTED -> tiktok
+  ✓ x              POSTED -> twitter
+  ✗ reddit         failed: {"success":false,"message":"None of the requested platforms are valid for profile \"revertabio\". Profile revertabio has no Reddit account configured","invalid_platforms":{"reddit":"Profile revertabio
+  ✓ instagram      POSTED -> instagram
+  ✗ youtube_shorts failed: {"success":false,"message":"None of the requested platforms are valid for profile \"revertabio\". Profile revertabio has no Youtube account configured","invalid_platforms":{"youtube":"Profile revertab
+  · email          non-aggregator (see email.md)
+  · aso            non-aggregator (see aso.md)
+  · blog           non-aggregator (see blog.md)
+
+Queue: outbox/2026-07-22/QUEUE.md  (provider=upload_post, live=True)  perf: +5 row(s) -> performance.csv
+
