@@ -258,7 +258,12 @@ def main():
                 else:
                     print(f"  ✓ {ch:14s} POSTED -> {platform}")
                     q += [f"\n## {ch} POSTED ✓  {json.dumps(res)[:200]}"]
-            except (urllib.error.URLError, urllib.error.HTTPError, RuntimeError) as e:
+            except Exception as e:
+                # Catch EVERYTHING per-channel (was only urllib/RuntimeError — a raw
+                # socket.timeout on a slow upload escaped it and crashed the whole run
+                # mid-loop, silently skipping every channel after it: July 22, X timed
+                # out and Instagram never posted). One channel's failure must never
+                # abort the others.
                 detail = e.read().decode(errors="replace")[:200] if hasattr(e, "read") else str(e)
                 print(f"  ✗ {ch:14s} failed: {detail}")
                 q += [f"\n## {ch} FAILED: {detail}", caption]
